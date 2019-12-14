@@ -4,6 +4,7 @@ function loadScript(url) {
             const script = document.createElement('script');
             script.src = url;
             script.onload = resolve;
+            script.type = 'text/babel'
             document.body.appendChild(script);
         })
 }
