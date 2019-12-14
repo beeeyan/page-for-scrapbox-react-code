@@ -2,7 +2,6 @@ function loadScript(url) {
     return new Promise(
         (resolve) => {
             const script = document.createElement('script');
-            script.type = 'text/babel';
             script.src = url;
             script.onload = resolve;
             document.body.appendChild(script);
