@@ -54,7 +54,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
     // 取り敢えずは一つしかないものとして実装する
     if (tablelist) {
-        tableurl = tablelist[0];
+        var tableurl = tablelist[0];
         var header;
         var xyElement;
         fetch(tableurl).then(function (response) {
