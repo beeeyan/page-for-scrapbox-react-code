@@ -8,7 +8,7 @@ function loadScript(url) {
         })
 }
 
-function loadStyle(url){
+function loadStyle(url) {
     return new Promise(
         (resolve) => {
             const link_tag = document.createElement('link');
@@ -22,20 +22,20 @@ function loadStyle(url){
 
 
 async function loadAllScripts(urls) {
-    for(let url of urls){
+    for (let url of urls) {
         await loadScript(url);
     }
 }
 
-async function loadAllStyles(urls){
-    for(let url of urls){
+async function loadAllStyles(urls) {
+    for (let url of urls) {
         await loadStyle(url);
     }
 }
 
 
 
-window.addEventListener('DOMContentLoaded', function(){
+window.addEventListener('DOMContentLoaded', function () {
     const args = {};
     // ?以降の結果を取得する
     document.location.search.substring(1).split('&').forEach(
@@ -46,16 +46,36 @@ window.addEventListener('DOMContentLoaded', function(){
         })
     const codelist = args['code'];
     const stylelist = args['style'];
+    const tablelist = args['table'];
 
     console.log('codelist', codelist);
     console.log('stylelist', stylelist);
+    console.log('tablelist', tablelist);
+
+    // 取り敢えずは一つしかないものとして実装する
+    if (tablelist) {
+        tableurl = tablelist;
+        var header;
+        var xyElement;
+        fetch(tableurl).then(function (response) {
+            return response.text();
+        }).then(function (text) {
+            var tempElement = text.split(/\r\n|\n/);
+            header = tempElement.slice(0, 1);
+            header = header[0].split(/,/);
+            xyElement = tempElement.slice(1);
+            export { header, xyElement };
+        })
+
+    }
+
 
     if (codelist) {
         let urls = codelist.split(/,/);
         loadAllScripts(urls);
     }
 
-    if(stylelist){
+    if (stylelist) {
         let urls = stylelist.split(/,/);
         loadAllStyles(urls);
     }
