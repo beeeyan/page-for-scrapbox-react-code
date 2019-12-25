@@ -64,8 +64,8 @@ window.addEventListener('DOMContentLoaded', function () {
             header = tempElement.slice(0, 1);
             header = header[0].split(/,/);
             xyElement = tempElement.slice(1);
-            document.getElementById('header').innerHTML = header;
-            document.getElementById('element').innerHTML = xyElement;
+            document.getElementById('header').innerHTML = header.toString;
+            document.getElementById('element').innerHTML = xyElement.toString;
         })
 
     }
