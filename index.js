@@ -63,7 +63,7 @@ window.addEventListener('DOMContentLoaded', function () {
             var tempElement = text.split(/\n/);
             header = tempElement.slice(0, 1);
             header = header[0].split(/,/);
-            xyElement = tempElement.slice(1).join(/\n/);
+            xyElement = tempElement.slice(1).join("<br>");
             document.getElementById('header').innerHTML = header;
             document.getElementById('element').innerHTML = xyElement;
         })
