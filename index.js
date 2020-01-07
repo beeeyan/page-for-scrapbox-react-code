@@ -60,10 +60,10 @@ window.addEventListener('DOMContentLoaded', function () {
         fetch(tableurl).then(function (response) {
             return response.text();
         }).then(function (text) {
-            var tempElement = text.split(/\r\n|\n/);
+            var tempElement = text.split(/\n/);
             header = tempElement.slice(0, 1);
             header = header[0].split(/,/);
-            xyElement = tempElement.slice(1);
+            xyElement = tempElement.slice(1).join(/\n/);
             document.getElementById('header').innerHTML = header;
             document.getElementById('element').innerHTML = xyElement;
         })
